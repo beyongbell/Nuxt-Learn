@@ -11,17 +11,23 @@
       <input v-model="question" />
     </p>
     <p>{{ answer }}</p>
+    <br />
+    <hr />
+    <br />
+    <Login @login-submit="handleLoginForm" />
   </div>
 </template>
 
 <script>
 import TodoItem from '@/components/TodoItem'
+import Login from '@/components/Login'
 import _ from 'lodash'
 import axios from 'axios'
 
 export default {
   components: {
     TodoItem,
+    Login,
   },
   data() {
     return {
@@ -59,6 +65,9 @@ export default {
         .catch(function (error) {
           vm.answer = 'Error! Could not reach the API. ' + error
         })
+    },
+    handleLoginForm(username, password) {
+      console.log('Page', username, password)
     },
   },
 }
